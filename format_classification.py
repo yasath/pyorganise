@@ -19,7 +19,8 @@ file_formats = [
          ["veg", "Vegas Pro"],
          ["vpj", "NCH VideoPad"],
          ["wlmp", "Windows Live Movie Maker"],
-         ["aep", "Adobe After Effects"]
+         ["aep", "Adobe After Effects"],
+         ["psd", "Adobe Photoshop"]
         ]
      ],
 
