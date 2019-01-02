@@ -18,7 +18,8 @@ file_formats = [
          ["vep", "AVS Video Editor"],
          ["veg", "Vegas Pro"],
          ["vpj", "NCH VideoPad"],
-         ["wlmp", "Windows Live Movie Maker"]
+         ["wlmp", "Windows Live Movie Maker"],
+         ["aep", "Adobe After Effects"]
         ]
      ],
 
