@@ -8,7 +8,9 @@ A CLI program to organise messy folders.
 
 ### Planned features
 - [ ] User-friendly GUI with file-picker
+- [ ] Allowing users to add custom filetypes and categories to the database
 - [ ] Copy mode as well as move mode, so files can just be copied
 - [ ] Moving files into folders and subfolders **based on file metadata**
 - [ ] Dynamic renaming of files based on file metadata
 - [ ] ID3 tagging of music files using AcoustID
+- [ ] *(Not in foreseeable future)* Allowing the filetype database to be updated online regularly
