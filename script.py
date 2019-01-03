@@ -7,6 +7,8 @@ from progress.bar import ChargingBar
 
 # Global Constants
 from format_classification import file_formats as FORMAT_CATEGORIES
+
+# Future Features (THESE CURRENTLY DO NOTHING)
 COPY_MODE = False  # Set to True to copy files instead of moving them
 
 
