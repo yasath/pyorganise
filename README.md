@@ -16,3 +16,4 @@ A CLI program to organise messy folders.
 - [ ] Dynamic renaming of files based on file metadata
 - [ ] ID3 tagging of music files using AcoustID
 - [ ] *(Not in foreseeable future)* Allowing the filetype database to be updated online regularly
+- [ ] *(Not in foreseeable future)* Allowing `pyorganise` to be imported as a function in other Python programs
