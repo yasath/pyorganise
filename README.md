@@ -1,7 +1,7 @@
 ## pyorganise
 A CLI program to organise messy folders.
 
-![Screenshot of program's UI on macOS](images/Future UI - Draft 1.png)
+![Screenshot of program's UI on macOS](https://github.com/yasath/pyorganise/raw/master/images/Future%20UI%20-%20Draft%201.png)
 
 ### Current features
 - [x] Moves files into neat folders and subfolders **based only on filetype**
