@@ -1,5 +1,5 @@
 ## pyorganise
-A CLI program to organise messy folders.
+A Python tool to organise messy folders.
 
 <img src="https://github.com/yasath/pyorganise/raw/master/images/Future%20UI%20-%20Draft%201.png" alt="Screenshot of program's UI on macOS" width="480"/>
 
