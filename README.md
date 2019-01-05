@@ -1,7 +1,7 @@
 ## pyorganise
 A Python tool to organise messy folders.
 
-<img src="https://github.com/yasath/pyorganise/raw/master/images/Future%20UI%20-%20Draft%201.png" alt="Screenshot of program's UI on macOS" width="480"/>
+<img src="https://github.com/yasath/pyorganise/raw/master/images/Screenshot1.png" alt="Screenshot of program's UI on macOS" width="480"/>
 
 ### Current features
 - [x] Moves files into neat folders and subfolders **based only on filetype**
