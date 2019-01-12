@@ -2,13 +2,12 @@ from os import path
 from os import rename
 from os import makedirs
 from os import sep as FOLDER_DELIMITER
+from shutil import copyfile
 import glob
 from progress.bar import ChargingBar
 
 # Global Constants
 from format_classification import file_formats as FORMAT_CATEGORIES
-
-# Future Features (THESE CURRENTLY DO NOTHING)
 COPY_MODE = False  # Set to True to copy files instead of moving them
 
 
@@ -64,7 +63,10 @@ def file_move(original_directory, file_path, file_category, new_filename):
         original_filename = path.split(original_path)[1]
         new_path += (FOLDER_DELIMITER + original_filename)
 
-    rename(original_path, new_path)
+    if COPY_MODE:
+        copyfile(original_path, new_path)
+    else:
+        rename(original_path, new_path)
 
 
 def main():
