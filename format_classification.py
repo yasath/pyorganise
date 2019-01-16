@@ -5,7 +5,11 @@ file_formats = [
 
     ["Android Packages", ["apk"]],
 
-    ["Chrome Extensions", ["crx"]],
+    ["Extensions",
+        [
+         ["crx", "Chrome"],
+        ]
+     ],
 
     ["Project Files",
         [
@@ -20,13 +24,14 @@ file_formats = [
          ["vpj", "NCH VideoPad"],
          ["wlmp", "Windows Live Movie Maker"],
          ["aep", "Adobe After Effects"],
-         ["psd", "Adobe Photoshop"]
+         ["psd", "Adobe Photoshop"],
+         ["fcpevent", "Final Cut Pro X"]
         ]
      ],
 
     ["Audio", ["3ga", "aa", "aax", "aif", "aifc", "aiff", "amr", "ape",
                "au", "awb", "caf", "cda", "gsm", "iff", "kar", "koz",
-               "m4p", "m4r", "mid", "midi", "mmf", "mp2", "mpa",
+               "m4p", "m4r", "mid", "midi", "mmf", "mp2", "mpa", "itl",
                "mpc", "mpga", "ogg", "oma", "opus", "qcp", "ra", "ram"]],
 
     ["Music", ["aac", "flac", "m4a", "mp3", "wav", "wma"]],
@@ -66,6 +71,52 @@ file_formats = [
     ["CAD", ["dxf", "obj", "fbx", "ige", "iges", "igs", "prt", "g", "neu",
              "sab", "sat", "smb", "smt", "stl", "ste", "step", "stp", "asm"]],
 
-    ["Data", ["adt", "clp"]]
+    ["Data", ["adt", "clp", "cma", "dif", "efx", "flo", "gbr", "ged", "gms",
+              "mtw", "quickendata", "sdf", "tax2012", "tax2014", "tax2016",
+              "bup"]],
+
+    ["Data",
+        [
+         ["accdb", "Databases"],
+         ["crypt", "Databases"],
+         ["db", "Databases"],
+         ["dbf", "Databases"],
+         ["mdb", "Databases"],
+         ["pdb", "Databases"],
+         ["sql", "Databases"]
+        ]
+     ],
+
+    ["System Files", ["keychain"]],
+
+    ["Documents", ["one"]],
+
+    ["Contacts", ["vcf"]],
+
+    ["Developer", ["apa", "bluej", "cod", "dtd", "fxc"]],
+
+    ["Developer",
+        [
+         ["asc", "ActionScript"],
+         ["asm", "Assembly Language"],
+         ["b", "BASIC"],
+         ["bas", "BASIC"],
+         ["bet", "BETA"],
+         ["c", "C/C++"],
+         ["cbl", "COBOL"],
+         ["cd", "Microsoft Visual Studio"],
+         ["class", "Java"],
+         ["cpp", "C++"],
+         ["cs", "C#"],
+         ["d", "D"],
+         ["def", "C++"],
+         ["erb", "Ruby"],
+         ["fsproj", "F#"],
+         ["h", "C/C++/Objective-C"],
+         ["hpp", "C++"]
+        ]
+     ],
+
+    ["Animations", ["fla"]]
 
 ]
