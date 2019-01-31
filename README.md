@@ -10,7 +10,7 @@ A Python tool to organise messy folders.
 - [x] Entirely cross-platform
 
 ### Planned features
-- [ ] User-friendly GUI with file-picker (draft pictured above)
+- [ ] User-friendly GUI with file-picker
 - [ ] Allowing users to add custom filetypes and categories to the database
 - [ ] Moving files into folders and subfolders **based on file metadata**
 - [ ] Dynamic renaming of files based on file metadata
