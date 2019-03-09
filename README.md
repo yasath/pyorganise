@@ -15,5 +15,7 @@ A Python tool to organise messy folders.
 - [ ] Moving files into folders and subfolders **based on file metadata**
 - [ ] Dynamic renaming of files based on file metadata
 - [ ] ID3 tagging of music files using AcoustID
+- [ ] Using AcoustID fingerprints to identify and delete duplicate audio files, and keeping the higher quality option
+- [ ] Identifying and deleting duplicate image files, and keeping the higher quality option
 - [ ] *(Not in foreseeable future)* Allowing the filetype database to be updated online regularly
 - [ ] *(Not in foreseeable future)* Allowing `pyorganise` to be imported as a function in other Python programs
