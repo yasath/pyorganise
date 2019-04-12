@@ -1,16 +1,15 @@
 ## pyorganise
 A Python tool to organise messy folders.
 
-<img src="https://github.com/yasath/pyorganise/raw/master/images/CLI-Demo.gif" alt="Screen capture of program's CLI UI on macOS"/>
-
 ### Current features
 - [x] Moves files into neat folders and subfolders **based only on filetype**
 - [x] Only semi-complete database of filetypes and their categories (`format_classification.py`)
 - [x] Copy mode as well as move mode, so files can just be copied
 - [x] Entirely cross-platform
+- [x] User-friendly GUI with file-picker
 
 ### Planned features
-- [ ] User-friendly GUI with file-picker
+- [ ] Creating separate verbose mode for further detail
 - [ ] Allowing users to add custom filetypes and categories to the database
 - [ ] Moving files into folders and subfolders **based on file metadata**
 - [ ] Dynamic renaming of files based on file metadata
