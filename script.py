@@ -1,27 +1,60 @@
 from os import path
 from os import rename
 from os import makedirs
-from os import sep as FOLDER_DELIMITER
 from shutil import copyfile
 import glob
-from progress.bar import ChargingBar
+from gooey import Gooey, GooeyParser
+import sys
 
 # Global Constants
 from format_classification import file_formats as FORMAT_CATEGORIES
-COPY_MODE = False  # Set to True to copy files instead of moving them
+from os import sep as FOLDER_DELIMITER
 
 
-def input_directory():
-    while True:
-        try:
-            directory = input("Please enter the directory to organise: ")
-            if not path.isdir(directory):
-                raise NotADirectoryError("Invalid directory entered",
-                                         directory)
-            break
-        except NotADirectoryError:
-            print("The entered directory is not valid. Try again.\n")
-    return(directory)
+@Gooey(program_name="Folder Organiser",
+       progress_regex=r"^Inspecting file (?P<current>\d+)/(?P<total>\d+)...$",
+       progress_expr="current / total * 100",
+       image_dir="images/gooey_img")
+def main():
+    desc = "Neatly rename and organise your files into helpful subfolders"
+
+    parser = GooeyParser(description=desc)
+
+    parser.add_argument(
+        "required_field",
+        metavar="Choose folder:",
+        help="Choose the directory to be organised",
+        widget="DirChooser")
+
+    parser.add_argument(
+        "-c", "--copy",
+        metavar="Copy mode:",
+        action="store_true",
+        help="""Enabling this option copies files into subfolders instead of
+ moving them""".replace("\n", ""))
+
+    args = parser.parse_args()
+
+    directory_to_organise = args.required_field
+    copy_mode = args.copy
+
+    unorganised_files = get_files(directory_to_organise)
+
+    counter = 0
+
+    for file_path in unorganised_files:
+        counter += 1
+        print("Inspecting file {}/{}...".format(counter,
+                                                len(unorganised_files)))
+
+        file_category = find_filetype(file_path[1])
+        # file_category = extra_categories(file_path, file_category)
+        # new_filename = file_rename(file_path)
+        new_filename = None
+        file_move(directory_to_organise, file_path,
+                  file_category, new_filename, copy_mode)
+
+        sys.stdout.flush()
 
 
 def get_files(directory):
@@ -45,12 +78,15 @@ def find_filetype(file_extension):
     return(["Miscellaneous"])
 
 
-def file_move(original_directory, file_path, file_category, new_filename):
+def file_move(original_directory, file_path, file_category, new_filename,
+              copy_mode):
     original_path = file_path[0] + file_path[1]
 
     new_path = original_directory
+    short_path = ""
     for folder in file_category:
         new_path += (FOLDER_DELIMITER + folder)
+        short_path += (FOLDER_DELIMITER + folder)
 
     try:
         makedirs(new_path)
@@ -59,32 +95,20 @@ def file_move(original_directory, file_path, file_category, new_filename):
 
     if new_filename:
         new_path += (FOLDER_DELIMITER + new_filename)
+        short_path += (FOLDER_DELIMITER + new_filename)
     else:
         original_filename = path.split(original_path)[1]
         new_path += (FOLDER_DELIMITER + original_filename)
+        short_path += (FOLDER_DELIMITER + original_filename)
 
-    if COPY_MODE:
+    if copy_mode:
         copyfile(original_path, new_path)
+        print("Copied '{0}' to '{1}'\n".format(original_filename,
+                                               short_path[1:]))
     else:
         rename(original_path, new_path)
-
-
-def main():
-    directory_to_organise = input_directory()
-    unorganised_files = get_files(directory_to_organise)
-
-    progress_bar = ChargingBar("Organising files...",
-                               max=len(unorganised_files))
-
-    for file_path in unorganised_files:
-        file_category = find_filetype(file_path[1])
-        # file_category = extra_categories(file_path, file_category)
-        # new_filename = file_rename(file_path)
-        new_filename = None
-        file_move(directory_to_organise, file_path,
-                  file_category, new_filename)
-        progress_bar.next()
-    progress_bar.finish()
+        print("Moved '{0}' to '{1}'\n".format(original_filename,
+                                              short_path[1:]))
 
 
 # MAIN PROGRAM
