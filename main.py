@@ -35,7 +35,7 @@ def main():
     parser.add_argument(
         "-v", "--verbose",
         metavar="Verbose mode:",
-        action="store_true",
+        action="store_false",
         help="More detailed log of the process")
 
     args = parser.parse_args()
