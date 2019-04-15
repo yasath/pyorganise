@@ -30,7 +30,7 @@ def main():
         "-c", "--copy",
         metavar="Copy mode:",
         action="store_true",
-        help="Copies files instead of replacing them")
+        help="Copies files instead of moving them")
 
     parser.add_argument(
         "-v", "--verbose",
