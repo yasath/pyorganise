@@ -30,13 +30,23 @@ def main():
         "-c", "--copy",
         metavar="Copy mode:",
         action="store_true",
-        help="""Enabling this option copies files into subfolders instead of
- moving them""".replace("\n", ""))
+        help="Copies files instead of replacing them")
+
+    parser.add_argument(
+        "-v", "--verbose",
+        metavar="Verbose mode:",
+        action="store_true",
+        help="More detailed log of the process")
 
     args = parser.parse_args()
 
     directory_to_organise = args.required_field
+
+    global copy_mode
     copy_mode = args.copy
+
+    global verbose_mode
+    verbose_mode = args.verbose
 
     unorganised_files = get_files(directory_to_organise)
 
@@ -52,9 +62,14 @@ def main():
         # new_filename = file_rename(file_path)
         new_filename = None
         file_move(directory_to_organise, file_path,
-                  file_category, new_filename, copy_mode)
+                  file_category, new_filename)
 
         sys.stdout.flush()
+
+
+def verbose_print(string):
+    if verbose_mode:
+        print(string)
 
 
 def get_files(directory):
@@ -78,8 +93,7 @@ def find_filetype(file_extension):
     return(["Miscellaneous"])
 
 
-def file_move(original_directory, file_path, file_category, new_filename,
-              copy_mode):
+def file_move(original_directory, file_path, file_category, new_filename):
     original_path = file_path[0] + file_path[1]
 
     new_path = original_directory
