@@ -8,7 +8,7 @@ A Python tool to organise messy folders.
 - [x] Only semi-complete database of filetypes and their categories (`format_classification.py`)
 - [x] Copy mode as well as move mode, so files can just be copied
 - [x] Entirely cross-platform
-- [x] User-friendly GUI with file-picker
+- [x] User-friendly GUI with folder-picker
 - [x] Separate verbose mode for further detail
 
 ### Planned features
