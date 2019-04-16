@@ -35,7 +35,7 @@ def main():
     parser.add_argument(
         "-v", "--verbose",
         metavar="Verbose mode:",
-        action="store_false",
+        action="store_true",
         help="More detailed log of the process")
 
     args = parser.parse_args()
@@ -54,10 +54,12 @@ def main():
 
     for file_path in unorganised_files:
         counter += 1
-        print("Inspecting file {}/{}...".format(counter,
-                                                len(unorganised_files)))
+        print("Inspecting file {0}/{1}...".format(counter,
+                                                  len(unorganised_files)))
 
         file_category = find_filetype(file_path[1])
+        verbose_print("File category for {0} identified as {1}"
+                      .format(file_path[1], file_category))
         # file_category = extra_categories(file_path, file_category)
         # new_filename = file_rename(file_path)
         new_filename = None
