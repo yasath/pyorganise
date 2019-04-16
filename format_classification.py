@@ -93,7 +93,7 @@ file_formats = [
 
     ["Contacts", ["vcf"]],
 
-    ["Developer", ["apa", "bluej", "cod", "dtd", "fxc"]],
+    ["Developer", ["apa", "bluej", "cod", "dtd", "fxc", "m4", "o"]],
 
     ["Developer",
         [
@@ -113,10 +113,21 @@ file_formats = [
          ["erb", "Ruby"],
          ["fsproj", "F#"],
          ["h", "C/C++/Objective-C"],
-         ["hpp", "C++"]
+         ["hpp", "C++"],
+         ["iwb", "IWBasic"],
+         ["java", "Java"],
+         ["kv", "Kivy"],
+         ["lua", "Lua"],
+         ["m", "Objective-C"],
+         ["nib", "Interface Builder"],
+         ["owl", "OWL"],
+         ["p", "Pascal"],
+         ["pas", "Pascal"]
         ]
      ],
 
-    ["Animations", ["fla"]]
+    ["Animations", ["fla"]],
+
+    ["Text", ["md"]],
 
 ]
