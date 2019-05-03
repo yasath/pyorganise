@@ -122,7 +122,8 @@ file_formats = [
          ["nib", "Interface Builder"],
          ["owl", "OWL"],
          ["p", "Pascal"],
-         ["pas", "Pascal"]
+         ["pas", "Pascal"],
+         ["py", "Python"]
         ]
      ],
 
