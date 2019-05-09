@@ -1,4 +1,5 @@
 from os import path
+# RESEARCH IF YOU CAN KEEP THESE MODULE FILES IN A SEPARATE SUBFOLDER
 
 
 def extra_id(file_path, file_category):
@@ -6,8 +7,10 @@ def extra_id(file_path, file_category):
     original_filename = path.split(file_path[0] + file_path[1])[1]
     extension = file_path[1][1:]
 
+    # research other audio extensions that can hold the same type of ID3 tags
+    # possibly m4a (esp. from iTunes), aac, flac, wav
     if extension == "mp3":
-        # EXTERNAL .PY FILE
+        # EXTERNAL music_tag.PY FILE
         # acoustid thing here
         # look up in musicbrainz database
         # return song metadata
@@ -17,7 +20,7 @@ def extra_id(file_path, file_category):
         pass
 
     if extension == "jpg":
-        # EXTERNAL .PY FILE
+        # EXTERNAL exif_tag.PY FILE
         # read exif data from image
         # check for device metadata and return string, e.g. 'iPhone 6'
         # find date created and return string, e.g. '2019.04.22'
