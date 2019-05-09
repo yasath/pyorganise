@@ -29,10 +29,16 @@ def extra_id(file_path, file_category):
         # folder extended with ['iPhone 6', '2019.04.22', 'IMG_2203.jpg']
         pass
 
-    if extension == "docx":
+    if extension == "docx" or extension == "pptx":
         # find date created and return string, e.g. '2018.11.27'
         # file renamed with '[yyyy.mm.dd]' appended before
         # folder extended with ['yyyy']
+        pass
+
+    if extension == "vcf":
+        # EXTERNAL vcf_tag.PY FILE
+        # read vcf contact data
+        # file renamed with 'First Middle Last'
         pass
 
     return(original_filename, file_category)
