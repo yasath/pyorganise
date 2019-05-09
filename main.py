@@ -4,11 +4,13 @@ from os import makedirs
 from shutil import copyfile
 import glob
 from gooey import Gooey, GooeyParser
-import sys
 
 # Global Constants
 from format_classification import file_formats as FORMAT_CATEGORIES
 from os import sep as FOLDER_DELIMITER
+
+# Submodules
+from extra_id import extra_id
 
 
 @Gooey(program_name="Folder Organiser",
@@ -60,13 +62,13 @@ def main():
         file_category = find_filetype(file_path[1])
         verbose_print("File category for {0} identified as {1}"
                       .format(file_path[1], file_category))
-        # file_category = extra_categories(file_path, file_category)
-        # new_filename = file_rename(file_path)
-        new_filename = None
-        file_move(directory_to_organise, file_path,
-                  file_category, new_filename)
 
-        sys.stdout.flush()
+        new_filename, file_category = extra_id(file_path, file_category)
+
+        print(new_filename)
+        print(file_category)
+
+# file_move(directory_to_organise, file_path, file_category, new_filename)
 
 
 def verbose_print(string):
