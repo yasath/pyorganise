@@ -89,7 +89,9 @@ file_formats = [
 
     ["System Files", ["keychain"]],
 
-    ["Documents", ["one"]],
+    ["Documents", ["one", "docx"]],
+
+    ["Presentations", ["pptx"]],
 
     ["Contacts", ["vcf"]],
 
