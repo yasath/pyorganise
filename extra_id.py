@@ -1,8 +1,22 @@
-from os import path
+from os import path, stat
+from platform import system
+from datetime import date
+
 # RESEARCH IF YOU CAN KEEP THESE MODULE FILES IN A SEPARATE SUBFOLDER
 
 
-def extra_id(file_path, file_category):
+def creation_date(path_to_file):
+    if system() == "Windows":
+        return(path.getctime(path_to_file))
+    else:
+        os_stat = stat(path_to_file)
+        try:
+            return(date.fromtimestamp(os_stat.st_birthtime))
+        except AttributeError:  # used if platform not supported, e.g. Linux
+            return(date.fromtimestamp(os_stat.st_mtime))
+
+
+def extra_id(file_path, file_category, verbose_mode):
 
     original_filename = path.split(file_path[0] + file_path[1])[1]
     extension = file_path[1][1:]
@@ -30,10 +44,15 @@ def extra_id(file_path, file_category):
         pass
 
     if extension == "docx" or extension == "pptx":
-        # find date created and return string, e.g. '2018.11.27'
-        # file renamed with '[yyyy.mm.dd]' appended before
-        # folder extended with ['yyyy']
-        pass
+        date_created = creation_date(file_path[0] + file_path[1])
+        if verbose_mode:
+            print("'{0}' was created on {1}".format(original_filename,
+                                                    date_created))
+        date_created = (str(date_created)).replace("-", ".")
+        new_filename = "[{0}] {1}".format(date_created, original_filename)
+        new_category = file_category
+        new_category.append(str(date_created.split(".")[0]))
+        return(new_filename, new_category)
 
     if extension == "vcf":
         # EXTERNAL vcf_tag.PY FILE

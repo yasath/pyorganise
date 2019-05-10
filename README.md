@@ -10,11 +10,12 @@ A Python tool to organise messy folders.
 - [x] Entirely cross-platform
 - [x] User-friendly GUI with folder-picker
 - [x] Separate verbose mode for further detail
+- [x] Dynamic renaming and categorisation of documents based on date created
 
 ### Planned features
 - [ ] Allowing users to add custom filetypes and categories to the database
 - [ ] Moving files into folders and subfolders **based on file metadata**
-- [ ] Dynamic renaming of files based on file metadata
+- [ ] Dynamic renaming of images based on EXIF metadata
 - [ ] ID3 tagging of music files using AcoustID
 - [ ] Using AcoustID fingerprints to identify and delete duplicate audio files, and keeping the higher quality option
 - [ ] Identifying and deleting duplicate image files, and keeping the higher quality option

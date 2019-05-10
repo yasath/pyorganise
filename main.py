@@ -10,7 +10,7 @@ from format_classification import file_formats as FORMAT_CATEGORIES
 from os import sep as FOLDER_DELIMITER
 
 # Submodules
-from extra_id import extra_id
+import extra_id
 
 
 @Gooey(program_name="Folder Organiser",
@@ -63,12 +63,15 @@ def main():
         verbose_print("File category for {0} identified as {1}"
                       .format(file_path[1], file_category))
 
-        new_filename, file_category = extra_id(file_path, file_category)
+        new_filename, file_category = extra_id.extra_id(file_path,
+                                                        file_category,
+                                                        verbose_mode)
 
-        print(new_filename)
-        print(file_category)
+        # print(new_filename)
+        # print(file_category)
 
-# file_move(directory_to_organise, file_path, file_category, new_filename)
+        file_move(directory_to_organise, file_path,
+                  file_category, new_filename)
 
 
 def verbose_print(string):
@@ -111,21 +114,19 @@ def file_move(original_directory, file_path, file_category, new_filename):
     except FileExistsError:
         pass
 
-    if new_filename:
-        new_path += (FOLDER_DELIMITER + new_filename)
-        short_path += (FOLDER_DELIMITER + new_filename)
-    else:
-        original_filename = path.split(original_path)[1]
-        new_path += (FOLDER_DELIMITER + original_filename)
-        short_path += (FOLDER_DELIMITER + original_filename)
+    if not new_filename:
+        new_filename = path.split(original_path)[1]
+
+    new_path += (FOLDER_DELIMITER + new_filename)
+    short_path += (FOLDER_DELIMITER + new_filename)
 
     if copy_mode:
         copyfile(original_path, new_path)
-        print("Copied '{0}' to '{1}'\n".format(original_filename,
+        print("Copied '{0}' to '{1}'\n".format(new_filename,
                                                short_path[1:]))
     else:
         rename(original_path, new_path)
-        print("Moved '{0}' to '{1}'\n".format(original_filename,
+        print("Moved '{0}' to '{1}'\n".format(new_filename,
                                               short_path[1:]))
 
 
