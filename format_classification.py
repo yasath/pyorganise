@@ -213,7 +213,7 @@ file_formats = [
 
     ["Images", ["bmp", "dcm", "dng", "flif", "gif", "hdr", "heic", "jp2",
                 "jpeg", "ithmb", "jpg", "pct", "pict", "tif", "tiff", "wbmp",
-                "webp"]],
+                "webp", "png"]],
 
     ["Images",
         [
