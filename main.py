@@ -1,8 +1,9 @@
 from os import path
 from os import rename
 from os import makedirs
+from os import walk
+from glob import glob
 from shutil import copyfile
-import glob
 from gooey import Gooey, GooeyParser
 
 # Global Constants
@@ -32,7 +33,7 @@ def main():
         widget="DirChooser")
 
     optional_group = parser.add_argument_group(
-        "Optional",
+        "Options",
         gooey_options={
                       'columns': 2
                       })
@@ -49,15 +50,24 @@ def main():
         action="store_true",
         help="More detailed log of the process")
 
+    optional_group.add_argument(
+        "-s", "--nosubfolders",
+        metavar="Subfolder mode:",
+        action="store_true",
+        help="Leaves subfolders alone")
+
     args = parser.parse_args()
 
-    directory_to_organise = args.required_field
+    directory_to_organise = args.input_folder
 
     global copy_mode
     copy_mode = args.copy
 
     global verbose_mode
     verbose_mode = args.verbose
+
+    global subfolder_mode
+    subfolder_mode = args.nosubfolders
 
     unorganised_files = get_files(directory_to_organise)
 
@@ -68,7 +78,7 @@ def main():
         print("Inspecting file {0}/{1}...".format(counter,
                                                   len(unorganised_files)))
 
-        file_category = find_filetype(file_path[1])
+        file_category = find_filetype(file_path[1].lower())
         verbose_print("File category for {0} identified as {1}"
                       .format(file_path[1], file_category))
 
@@ -89,11 +99,22 @@ def verbose_print(string):
 
 
 def get_files(directory):
-    file_array = glob.glob(directory+FOLDER_DELIMITER+"*")
+    if subfolder_mode:
+        file_array = []
+        original_array = glob(directory+FOLDER_DELIMITER+"*")
+        for item in original_array:
+            if not path.isdir(item):
+                file_array.append(item)
+    else:
+        file_array = []
+        for paths, subdirs, files in walk(directory):
+            for name in files:
+                file_array.append(path.join(paths, name))
 
     split_file_array = []
     for file_path in file_array:
         split_file_array.append(path.splitext(file_path))
+
     return(split_file_array)
 
 
