@@ -189,7 +189,7 @@ file_formats = [
          ["air", "Adobe AIR"],
          ["app", "macOS"],
          ["dmg", "macOS"],
-         ["pkg", "macOS"]
+         ["pkg", "macOS"],
          ["bat", "Windows"],
          ["cmd", "Windows"],
          ["com", "Windows"],
