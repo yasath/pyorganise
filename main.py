@@ -22,19 +22,28 @@ def main():
 
     parser = GooeyParser(description=desc)
 
-    parser.add_argument(
-        "required_field",
+    input_group = parser.add_argument_group(
+        "Input")
+    input_group.add_argument(
+        "-i", "--input_folder",
+        required=True,
         metavar="Choose folder:",
         help="Choose the directory to be organised",
         widget="DirChooser")
 
-    parser.add_argument(
+    optional_group = parser.add_argument_group(
+        "Optional",
+        gooey_options={
+                      'columns': 2
+                      })
+
+    optional_group.add_argument(
         "-c", "--copy",
         metavar="Copy mode:",
         action="store_true",
         help="Copies files instead of moving them")
 
-    parser.add_argument(
+    optional_group.add_argument(
         "-v", "--verbose",
         metavar="Verbose mode:",
         action="store_true",
