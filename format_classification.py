@@ -264,6 +264,6 @@ file_formats = [
                "vob", "webm", "wmv"]],
 
     ["Subtitles", ["srt", "sub", "sbv", "ass", "ttxt", "smi", "ssf", "ssa",
-                   "svcd", "usf"]],
+                   "svcd", "usf"]]
 
 ]
