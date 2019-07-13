@@ -3,8 +3,6 @@ file_formats = [
                   "rpm", "sit", "sitx", "snb", "tar", "tar.gz", "tgz", "zip",
                   "zipx"]],
 
-    ["Android Packages", ["apk"]],
-
     ["Extensions",
         [
          ["crx", "Chrome"],
@@ -25,7 +23,12 @@ file_formats = [
          ["wlmp", "Windows Live Movie Maker"],
          ["aep", "Adobe After Effects"],
          ["psd", "Adobe Photoshop"],
-         ["fcpevent", "Final Cut Pro X"]
+         ["fcpevent", "Final Cut Pro X"],
+         ["fla", "Adobe Animate"],
+         ["indd", "Adobe InDesign"],
+         ["pspimage", "PaintShop Pro"],
+         ["ai", "Adobe Illustrator"],
+         ["rcproject", "iMovie '08"]
         ]
      ],
 
@@ -89,13 +92,34 @@ file_formats = [
 
     ["System Files", ["keychain"]],
 
-    ["Documents", ["one", "docx"]],
+    ["Documents", ["one", "docx", "doc", "docm", "dot", "dotx", "log", "odm",
+                   "odt", "pages", "pdf", "oxps", "pmd", "pub", "rtf", "xps",
+                   "tex", "wp5", "wpd", "wps", "mdi"]],
+
+    ["eBooks",
+        [
+         ["acsm", "Adobe Digital Editions"],
+         ["apnx", "Amazon Kindle"],
+         ["azw", "Amazon Kindle"],
+         ["azw3", "Amazon Kindle"],
+         ["epub", "EPUB"],
+         ["fb2", "FictionBook"],
+         ["lit", "Microsoft eBook"],
+         ["lrf", "Sony Reader"],
+         ["mobi", "Mobipocket"],
+         ["prc", "Mobipocket"],
+         ["vbk", "VitalSource"]
+        ]
+     ],
+
+    ["eBooks", ["opf", "tcr"]],
 
     ["Presentations", ["pptx"]],
 
     ["Contacts", ["vcf"]],
 
-    ["Developer", ["apa", "bluej", "cod", "dtd", "fxc", "m4", "o"]],
+    ["Developer", ["apa", "bluej", "cod", "dtd", "fxc", "m4", "o", "xml",
+                   "plist"]],
 
     ["Developer",
         [
@@ -107,6 +131,15 @@ file_formats = [
          ["c", "C/C++"],
          ["cbl", "COBOL"],
          ["cd", "Microsoft Visual Studio"],
+         ["rc", "Microsoft Visual Studio"],
+         ["resources", "Microsoft Visual Studio"],
+         ["sln", "Microsoft Visual Studio"],
+         ["suo", "Microsoft Visual Studio"],
+         ["trx", "Microsoft Visual Studio"],
+         ["vbp", "Microsoft Visual Studio"],
+         ["vbproj", "Microsoft Visual Studio"],
+         ["vbx", "Microsoft Visual Studio"],
+         ["vcxproj", "Microsoft Visual Studio"],
          ["class", "Java"],
          ["cpp", "C++"],
          ["cs", "C#"],
@@ -118,6 +151,8 @@ file_formats = [
          ["hpp", "C++"],
          ["iwb", "IWBasic"],
          ["java", "Java"],
+         ["js", "JavaScript"],
+         ["json", "JSON"],
          ["kv", "Kivy"],
          ["lua", "Lua"],
          ["m", "Objective-C"],
@@ -125,12 +160,110 @@ file_formats = [
          ["owl", "OWL"],
          ["p", "Pascal"],
          ["pas", "Pascal"],
-         ["py", "Python"]
+         ["py", "Python"],
+         ["pyw", "Python"],
+         ["sb", "Scratch"],
+         ["sb2", "Scratch"],
+         ["sh", "Bash Shell"],
+         ["bashrc", "Bash Shell"],
+         ["bash_history", "Bash Shell"],
+         ["bash_profile", "Bash Shell"],
+         ["swift", "Swift"],
+         ["xcodeproj", "Xcode"],
+         ["xap", "Silverlight"],
+         ["xib", "Xcode"],
+         ["yml", "YAML"]
         ]
      ],
 
-    ["Animations", ["fla"]],
+    ["Text", ["md", "txt"]],
 
-    ["Text", ["md"]],
+    ["Disk Images", ["img", "iso", "mdf"]],
+
+    ["Calendar", ["ics"]],
+
+    ["Torrents", ["torrent"]],
+
+    ["Applications",
+        [
+         ["air", "Adobe AIR"],
+         ["app", "macOS"],
+         ["dmg", "macOS"],
+         ["pkg", "macOS"]
+         ["bat", "Windows"],
+         ["cmd", "Windows"],
+         ["com", "Windows"],
+         ["exe", "Windows"],
+         ["msi", "Windows"],
+         ["gadget", "Windows"],
+         ["wsf", "Windows"],
+         ["ipa", "iOS"],
+         ["apk", "Android"]
+        ]
+     ],
+
+    ["Fonts", ["compositefont", "dfont", "ffil", "fnt", "fon", "otf", "odttf",
+               "suit", "ttc", "ttf", "woff", "woff2"]],
+
+    ["Presentations", ["flipchart", "key", "odp", "pps", "ppsx", "ppt", "pptm",
+                       "pptx"]],
+
+    ["Spreadsheets", ["csv", "numbers", "ods", "wk3", "wks", "xlr", "xls",
+                      "xlsb", "xlsm", "xlsx"]],
+
+    ["Images", ["bmp", "dcm", "dng", "flif", "gif", "hdr", "heic", "jp2",
+                "jpeg", "ithmb", "jpg", "pct", "pict", "tif", "tiff", "wbmp",
+                "webp"]],
+
+    ["Images",
+        [
+         ["eps", "Vector"],
+         ["mix", "Vector"],
+         ["odg", "Vector"],
+         ["svg", "Vector"],
+         ["vsd", "Vector"],
+         ["wpg", "Vector"]
+        ]
+     ],
+
+    ["Icons", ["ico", "icns", "icl", "iconpackage"]],
+
+    ["RAW Images",
+        [
+         ["arw", "Sony"],
+         ["sr2", "Sony"],
+         ["cr2", "Canon"],
+         ["crw", "Canon"],
+         ["nef", "Nikon"],
+         ["nrw", "Nikon"],
+         ["orf", "Olympus"],
+         ["raf", "Fuji"],
+         ["rwl", "Leica"]
+        ]
+     ],
+
+    ["Web", ["html", "url", "php", "css", "asp", "aspx", "dhmtl", "scss",
+             "htaccess", "htm", "jsp", "rss", "webloc", "xhtml"]],
+
+    ["System", ["bin", "cab", "cat", "cpl", "deskthemepack", "dit", "dll",
+                "dmp", "ebd", "hlp", "lnk", "ion", "mlc", "nb0", "nfo",
+                "sys"]],
+
+    ["System",
+        [
+         ["reg", "Registry"],
+         ["dev", "Drivers"],
+         ["drv", "Drivers"],
+         ["dvd", "Drivers"]
+        ]
+     ],
+
+    ["Video", ["264", "3g2", "3gp", "3gpp", "amv", "avi", "nik", "divx",
+               "f4v", "flv", "h264", "m2ts", "m4v", "mkv", "mov", "mp4",
+               "mpeg", "mpg", "mts", "mxf", "ogv", "qt", "swf", "ts",
+               "vob", "webm", "wmv"]],
+
+    ["Subtitles", ["srt", "sub", "sbv", "ass", "ttxt", "smi", "ssf", "ssa",
+                   "svcd", "usf"]],
 
 ]
