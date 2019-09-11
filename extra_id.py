@@ -56,7 +56,7 @@ def extra_id(file_path, file_category, verbose_mode):
 
     if extension == "vcf":
         # EXTERNAL vcf_tag.PY FILE
-        # read vcf contact data
+        # read vcf contact data using vobject library
         # file renamed with 'First Middle Last'
         pass
 
