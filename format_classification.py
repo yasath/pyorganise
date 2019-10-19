@@ -114,8 +114,6 @@ file_formats = [
 
     ["eBooks", ["opf", "tcr"]],
 
-    ["Presentations", ["pptx"]],
-
     ["Contacts", ["vcf"]],
 
     ["Developer", ["apa", "bluej", "cod", "dtd", "fxc", "m4", "o", "xml",
