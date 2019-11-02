@@ -90,8 +90,6 @@ file_formats = [
         ]
      ],
 
-    ["System Files", ["keychain"]],
-
     ["Documents", ["one", "docx", "doc", "docm", "dot", "dotx", "log", "odm",
                    "odt", "pages", "pdf", "oxps", "pmd", "pub", "rtf", "xps",
                    "tex", "wp5", "wpd", "wps", "mdi"]],
@@ -247,7 +245,7 @@ file_formats = [
 
     ["System", ["bin", "cab", "cat", "cpl", "deskthemepack", "dit", "dll",
                 "dmp", "ebd", "hlp", "lnk", "ion", "mlc", "nb0", "nfo",
-                "sys"]],
+                "sys", "keychain"]],
 
     ["System",
         [
