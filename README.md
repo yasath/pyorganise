@@ -16,6 +16,7 @@ A Python tool to organise messy folders.
 - [ ] Allowing users to add custom filetypes and categories to the database
 - [ ] Moving files into folders and subfolders **based on file metadata**
 - [ ] Dynamic renaming of images based on EXIF metadata
+- [ ] Dynamic subfoldering and renaming of eBooks based on metadata
 - [ ] ID3 tagging of music files using AcoustID
 - [ ] Using AcoustID fingerprints to identify and delete duplicate audio files, and keeping the higher quality option
 - [ ] Identifying and deleting duplicate image files, and keeping the higher quality option
