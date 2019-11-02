@@ -4,7 +4,6 @@ from os import makedirs
 from os import walk
 from glob import glob
 from shutil import copyfile
-from gooey import Gooey, GooeyParser
 
 # Global Constants
 from format_classification import file_formats as FORMAT_CATEGORIES
@@ -14,60 +13,19 @@ from os import sep as FOLDER_DELIMITER
 import extra_id
 
 
-@Gooey(program_name="Folder Organiser",
-       progress_regex=r"^Inspecting file (?P<current>\d+)/(?P<total>\d+)...$",
-       progress_expr="current / total * 100",
-       image_dir="images/gooey_img")
 def main():
     desc = "Neatly rename and organise your files into helpful subfolders"
 
-    parser = GooeyParser(description=desc)
+    directory_to_organise = args.input_folder  # Choose the directory to be organised
 
-    input_group = parser.add_argument_group(
-        "Input")
-    input_group.add_argument(
-        "-i", "--input_folder",
-        required=True,
-        metavar="Choose folder:",
-        help="Choose the directory to be organised",
-        widget="DirChooser")
+    global copy_mode  # Copy mode: Copies files instead of moving them
+    copy_mode = False
 
-    optional_group = parser.add_argument_group(
-        "Options",
-        gooey_options={
-                      'columns': 2
-                      })
+    global verbose_mode  # Verbose mode: More detailed log of the process
+    verbose_mode = True
 
-    optional_group.add_argument(
-        "-c", "--copy",
-        metavar="Copy mode:",
-        action="store_true",
-        help="Copies files instead of moving them")
-
-    optional_group.add_argument(
-        "-v", "--verbose",
-        metavar="Verbose mode:",
-        action="store_true",
-        help="More detailed log of the process")
-
-    optional_group.add_argument(
-        "-s", "--nosubfolders",
-        metavar="Subfolder mode:",
-        action="store_true",
-        help="Leaves subfolders alone")
-
-    args = parser.parse_args()
-
-    directory_to_organise = args.input_folder
-
-    global copy_mode
-    copy_mode = args.copy
-
-    global verbose_mode
-    verbose_mode = args.verbose
-
-    global subfolder_mode
-    subfolder_mode = args.nosubfolders
+    global subfolder_mode  # Subfolder mode: Leaves subfolders alone
+    subfolder_mode = False
 
     unorganised_files = get_files(directory_to_organise)
 
