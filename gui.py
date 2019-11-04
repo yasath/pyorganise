@@ -7,6 +7,7 @@ from platform import system
 
 def browse_button():
     global folder_path
+    root.update_idletasks()
     filename = filedialog.askdirectory()
     folder_path.set(filename)
     entryOne.insert(0, filename)
