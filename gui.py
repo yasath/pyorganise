@@ -10,6 +10,8 @@ def browse_button():
     root.update_idletasks()
     filename = filedialog.askdirectory()
     folder_path.set(filename)
+
+    entryOne.delete(0, "end")
     entryOne.insert(0, filename)
 
 
