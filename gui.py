@@ -46,6 +46,7 @@ ttk.Separator(root).grid(sticky="ew", row=1, columnspan=3)
 
 # Folder input
 # (https://stackoverflow.com/questions/4140437/interactively-validating-entry-widget-content-in-tkinter)
+# (https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/entry-validation.html)
 
 labelOne = ttk.Label(root, text="Choose folder:")
 labelOne.grid(row=2, sticky="w", pady=(10, 0), padx=10)
