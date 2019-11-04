@@ -1,6 +1,28 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import filedialog
+from tkinter import messagebox
 from platform import system
+
+
+def browse_button():
+    global folder_path
+    filename = filedialog.askdirectory()
+    folder_path.set(filename)
+    entryOne.insert(0, filename)
+
+
+def start_button():
+    message_body = folder_path.get() + "\n\n"
+    message_body += ("Copy mode: "+str(copy_mode.get())) + "\n"
+    message_body += ("Verbose mode: "+str(verbose_mode.get())) + "\n"
+    message_body += ("Subfolder mode: "+str(subfolder_mode.get()))
+    messagebox.showinfo("Input submitted!",
+                        message_body)
+
+    # for widget in root.winfo_children():
+    #    widget.destroy()
+
 
 # DEFINE THE WINDOW
 
@@ -29,11 +51,12 @@ labelTwo = ttk.Label(root, text="Choose the directory to be organised",
                      foreground="grey")
 labelTwo.grid(row=3, sticky="w", pady=(0, 0), padx=10)
 
+folder_path = tk.StringVar()
 entryOne = ttk.Entry(root)
 entryOne.grid(row=4, column=0, padx=(10, 0), pady=10, columnspan=2,
               sticky="nesw")
 
-buttonOne = ttk.Button(root, text="Browse")
+buttonOne = ttk.Button(root, text="Browse", command=browse_button)
 buttonOne.grid(row=4, column=2, pady=10, sticky="e")
 
 # OPTIONS SECTION
@@ -74,7 +97,7 @@ labelFive.grid(row=8, column=1, sticky="w", padx=10)
 buttonTwo = ttk.Button(root, text="Quit", command=root.destroy)
 buttonTwo.grid(row=11, column=1, sticky="e", pady=20)
 
-buttonThree = ttk.Button(root, text="Start")
+buttonThree = ttk.Button(root, text="Start", command=start_button)
 buttonThree.grid(row=11, column=2, sticky="w", pady=20)
 
 root.mainloop()
