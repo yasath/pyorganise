@@ -45,7 +45,7 @@ titleOne.grid(row=0, sticky="w", pady=(5, 10), padx=10)
 ttk.Separator(root).grid(sticky="ew", row=1, columnspan=3)
 
 # Folder input
-# (https://stackoverflow.com/questions/43516019/python-tkinter-browse-folder-button)
+# (https://stackoverflow.com/questions/4140437/interactively-validating-entry-widget-content-in-tkinter)
 
 labelOne = ttk.Label(root, text="Choose folder:")
 labelOne.grid(row=2, sticky="w", pady=(10, 0), padx=10)
