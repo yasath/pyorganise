@@ -69,6 +69,8 @@ checkboxThree.grid(row=7, sticky="w", column=1, pady=(12, 0), padx=10)
 labelFive = ttk.Label(root, text="Leaves subfolders alone", foreground="grey")
 labelFive.grid(row=8, column=1, sticky="w", padx=10)
 
+# Start and Quit buttons
+
 buttonTwo = ttk.Button(root, text="Quit", command=root.destroy)
 buttonTwo.grid(row=11, column=1, sticky="e", pady=20)
 
