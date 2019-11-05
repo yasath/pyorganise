@@ -14,7 +14,7 @@ import extra_id
 
 
 def main_organise(directory_to_organise, copy_int,
-                  verbose_int, subfolder_int):
+                  verbose_int, subfolder_int, tk_instance):
 
     global copy_mode  # Copy mode: Copies files instead of moving them
     copy_mode = bool(copy_int)
