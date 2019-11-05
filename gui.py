@@ -55,6 +55,8 @@ def start_button():
     scrollbar.config(command=textbox.yview)
     textbox.config(yscrollcommand=scrollbar.set)
 
+    # (https://stackoverflow.com/questions/7310511/how-to-create-downloading-progress-bar-in-ttk)
+
     progress_bar = ttk.Progressbar(root, orient="horizontal", length=300,
                                    mode="determinate", maximum=100, value=50)
     progress_bar.grid(row=3, column=0, sticky="w", padx=20, pady=(0, 20))
