@@ -13,19 +13,17 @@ from os import sep as FOLDER_DELIMITER
 import extra_id
 
 
-def main():
-    desc = "Neatly rename and organise your files into helpful subfolders"
-
-    directory_to_organise = args.input_folder  # Choose the directory to be organised
+def main_organise(directory_to_organise, copy_int,
+                  verbose_int, subfolder_int):
 
     global copy_mode  # Copy mode: Copies files instead of moving them
-    copy_mode = False
+    copy_mode = bool(copy_int)
 
     global verbose_mode  # Verbose mode: More detailed log of the process
-    verbose_mode = True
+    verbose_mode = bool(verbose_int)
 
     global subfolder_mode  # Subfolder mode: Leaves subfolders alone
-    subfolder_mode = False
+    subfolder_mode = bool(subfolder_int)
 
     unorganised_files = get_files(directory_to_organise)
 
@@ -116,9 +114,3 @@ def file_move(original_directory, file_path, file_category, new_filename):
         rename(original_path, new_path)
         print("Moved '{0}' to '{1}'\n".format(new_filename,
                                               short_path[1:]))
-
-
-# MAIN PROGRAM
-
-if __name__ == "__main__":
-    main()
