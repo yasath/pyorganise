@@ -16,7 +16,7 @@ def browse_button():
 def quit_button():
     quit_result = messagebox.askyesno("Quit",
                                       "Are you sure you want to exit?")
-    if quit_result == True:
+    if quit_result is True:
         root.destroy()
     else:
         pass
@@ -74,7 +74,7 @@ entryOne.grid(row=4, column=0, padx=(10, 0), pady=10, columnspan=2,
               sticky="nesw")
 
 buttonOne = ttk.Button(root, text="Browse", command=browse_button)
-buttonOne.grid(row=4, column=2, padx=(0,10), pady=10, sticky="e")
+buttonOne.grid(row=4, column=2, padx=(0, 10), pady=10, sticky="e")
 
 # OPTIONS SECTION
 
@@ -112,9 +112,9 @@ labelFive.grid(row=9, column=1, sticky="w")
 # Start and Quit buttons
 
 buttonTwo = ttk.Button(root, text="Quit", command=quit_button)
-buttonTwo.grid(row=12, column=1, sticky="e", pady=(20,10))
+buttonTwo.grid(row=12, column=1, sticky="e", pady=(20, 10))
 
 buttonThree = ttk.Button(root, text="Start", command=start_button)
-buttonThree.grid(row=12, column=2, sticky="w", pady=(20,10), padx=(0,10))
+buttonThree.grid(row=12, column=2, sticky="w", pady=(20, 10), padx=(0, 10))
 
 root.mainloop()
