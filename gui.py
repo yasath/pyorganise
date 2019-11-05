@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 from platform import system
+# import pyorganise
 
 
 def browse_button():
@@ -24,14 +25,42 @@ def quit_button():
 
 def start_button():
     message_body = folder_input.get() + "\n\n"
-    message_body += ("Copy mode: "+str(copy_mode.get())) + "\n"
-    message_body += ("Verbose mode: "+str(verbose_mode.get())) + "\n"
-    message_body += ("Subfolder mode: "+str(subfolder_mode.get()))
-    messagebox.showinfo("Input submitted!",
-                        message_body)
 
-    # for widget in root.winfo_children():
-    #    widget.destroy()
+    if verbose_mode.get() == 1:
+        message_body += ("Copy mode: "+str(copy_mode.get())) + "\n"
+        message_body += ("Verbose mode: "+str(verbose_mode.get())) + "\n"
+        message_body += ("Subfolder mode: "+str(subfolder_mode.get())) + "\n\n"
+
+    message_body += "Are you sure you want to organise this folder?"
+    doublecheck_result = messagebox.askyesno("Input submitted!",
+                                             message_body)
+
+    if doublecheck_result is True:
+        for widget in root.winfo_children():
+            widget.destroy()
+    else:
+        pass
+
+    processing_title = ttk.Label(root, text="Processing...",
+                                 font=(SYS_FONT, 18, "bold"))
+    processing_title.grid(row=0, sticky="w", pady=(5, 10), padx=10)
+
+    ttk.Separator(root).grid(sticky="ew", row=1, columnspan=3)
+
+    scrollbar = ttk.Scrollbar(root)
+    textbox = tk.Text(root, font=SYS_FONT, wrap="word")
+    scrollbar.grid(row=2, column=2, pady=20, padx=(0, 20), sticky="nesw")
+    textbox.grid(row=2, column=0, pady=20, padx=(20, 0), columnspan=2,
+                 sticky="w")
+    scrollbar.config(command=textbox.yview)
+    textbox.config(yscrollcommand=scrollbar.set)
+
+    progress_bar = ttk.Progressbar(root, orient="horizontal", length=300,
+                                   mode="determinate", maximum=100, value=50)
+    progress_bar.grid(row=3, column=0, sticky="w", padx=20, pady=(0, 20))
+
+    done_button = ttk.Button(root, text="Done", state="disabled")
+    done_button.grid(row=3, column=1, sticky="e", pady=(0, 20))
 
 
 # DEFINE THE WINDOW
@@ -49,15 +78,15 @@ root.grid_columnconfigure(0, weight=1)
 
 if system() == "Darwin":
     root.configure(background="#ececec")
-    BIG_FONT = "TkDefaultFont"
+    SYS_FONT = "TkDefaultFont"
 elif system() == "Windows":
-    BIG_FONT = "Segoe UI"
+    SYS_FONT = "Segoe UI"
 else:
-    BIG_FONT = "TkDefaultFont"
+    SYS_FONT = "TkDefaultFont"
 
 # INPUT SECTION
 
-input_title = ttk.Label(root, text="Input", font=(BIG_FONT, 18, "bold"))
+input_title = ttk.Label(root, text="Input", font=(SYS_FONT, 18, "bold"))
 input_title.grid(row=0, sticky="w", pady=(5, 10), padx=10)
 
 ttk.Separator(root).grid(sticky="ew", row=1, columnspan=3)
@@ -81,7 +110,7 @@ folder_button.grid(row=4, column=2, padx=(0, 10), pady=10, sticky="e")
 
 # OPTIONS SECTION
 
-options_title = ttk.Label(root, text="Options", font=(BIG_FONT, 18, "bold"))
+options_title = ttk.Label(root, text="Options", font=(SYS_FONT, 18, "bold"))
 options_title.grid(row=6, sticky="w", pady=(0, 10), padx=10)
 
 ttk.Separator(root).grid(sticky="ew", row=7, columnspan=3)
