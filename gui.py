@@ -71,12 +71,7 @@ root = tk.Tk()
 
 root.title("Folder Organiser")
 
-if system() != "Darwin":
-    root.resizable(True, False)
-    root.minsize(450, 0)
-else:
-    root.resizable(False, False)
-root.grid_columnconfigure(0, weight=1)
+root.resizable(False, False)
 
 if system() == "Darwin":
     root.configure(background="#ececec")
