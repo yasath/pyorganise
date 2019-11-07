@@ -68,9 +68,7 @@ def start_button():
 # DEFINE THE WINDOW
 
 root = tk.Tk()
-
 root.title("Folder Organiser")
-
 root.resizable(False, False)
 
 if system() == "Darwin":
