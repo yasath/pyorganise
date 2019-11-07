@@ -48,7 +48,7 @@ def start_button():
     ttk.Separator(root).grid(sticky="ew", row=1, columnspan=3)
 
     scrollbar = ttk.Scrollbar(root)
-    textbox = tk.Text(root, font=SYS_FONT, wrap="word")
+    textbox = tk.Text(root, font=(SYS_FONT, 9), wrap="word")
     scrollbar.grid(row=2, column=2, pady=20, padx=(0, 20), sticky="nesw")
     textbox.grid(row=2, column=0, pady=20, padx=(20, 0), columnspan=2,
                  sticky="w")
