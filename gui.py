@@ -39,7 +39,7 @@ def start_button():
         for widget in root.winfo_children():
             widget.destroy()
     else:
-        pass
+        return
 
     processing_title = ttk.Label(root, text="Processing...",
                                  font=(SYS_FONT, 18, "bold"))
