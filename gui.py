@@ -6,6 +6,15 @@ from platform import system
 # import pyorganise
 
 
+def to_YesNo(input_value):
+    if input_value == 0:
+        return("No")
+    elif input_value == 1:
+        return("Yes")
+    else:
+        return
+
+
 def browse_button():
     root.update_idletasks()
     filename = filedialog.askdirectory()
@@ -27,9 +36,9 @@ def start_button():
     message_body = folder_input.get() + "\n\n"
 
     if verbose_mode.get() == 1:
-        message_body += ("Copy mode: "+str(copy_mode.get())) + "\n"
-        message_body += ("Verbose mode: "+str(verbose_mode.get())) + "\n"
-        message_body += ("Subfolder mode: "+str(subfolder_mode.get())) + "\n\n"
+        message_body += ("Copy mode: "+to_YesNo(copy_mode.get())) + "\n"
+        message_body += ("Verbose mode: "+to_YesNo(verbose_mode.get())) + "\n"
+        message_body += ("Subfolder mode: "+to_YesNo(subfolder_mode.get())) + "\n\n"
 
     message_body += "Are you sure you want to organise this folder?"
     doublecheck_result = messagebox.askyesno("Input submitted!",
