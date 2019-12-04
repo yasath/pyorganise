@@ -18,9 +18,9 @@ def to_YesNo(input_value):
 def browse_button():
     root.update_idletasks()
     filename = filedialog.askdirectory()
-
-    folder_input.delete(0, "end")
-    folder_input.insert(0, filename)
+    if filename:
+        folder_input.delete(0, "end")
+        folder_input.insert(0, filename)
 
 
 def quit_button():
@@ -38,8 +38,7 @@ def start_button():
     if verbose_mode.get() == 1:
         message_body += ("Copy mode: "+to_YesNo(copy_mode.get())) + "\n"
         message_body += ("Verbose mode: "+to_YesNo(verbose_mode.get())) + "\n"
-        message_body += ("Subfolder mode: "+to_YesNo(subfolder_mode.get()))
-        message_body += "\n\n"
+        message_body += ("Subfolder mode: "+to_YesNo(subfolder_mode.get())) + "\n\n"
 
     message_body += "Are you sure you want to organise this folder?"
     doublecheck_result = messagebox.askyesno("Input submitted!",
@@ -58,8 +57,7 @@ def start_button():
     ttk.Separator(root).grid(sticky="ew", row=1, columnspan=3)
 
     scrollbar = ttk.Scrollbar(root)
-    textbox = tk.Text(root, width=60, height=15, font=(SYS_FONT, 12),
-                      wrap="word")
+    textbox = tk.Text(root, width=60, height=15, font=(SYS_FONT, 12), wrap="word")
     scrollbar.grid(row=2, column=2, pady=20, padx=(0, 20), sticky="nesw")
     textbox.grid(row=2, column=0, pady=20, padx=(20, 0), columnspan=2,
                  sticky="w")
