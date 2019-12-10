@@ -3,7 +3,7 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 from platform import system
-# import pyorganise
+import pyorganise
 
 
 def to_YesNo(input_value):
@@ -45,6 +45,11 @@ def start_button():
     doublecheck_result = messagebox.askyesno("Input submitted!",
                                              message_body)
 
+    directory_to_organise = folder_input.get()
+    copy_int = copy_mode.get()
+    verbose_int = verbose_mode.get()
+    subfolder_int = subfolder_mode.get()
+
     if doublecheck_result is True:
         for widget in root.winfo_children():
             widget.destroy()
@@ -76,6 +81,12 @@ def start_button():
 
     done_button = ttk.Button(root, text="Done", state="disabled")
     done_button.grid(row=3, column=1, sticky="e", pady=(0, 20))
+
+    pyorganise.main_organise(directory_to_organise,
+                             copy_int,
+                             verbose_int,
+                             subfolder_int,
+                             textbox)
 
 
 # DEFINE THE WINDOW

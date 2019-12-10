@@ -14,7 +14,7 @@ import extra_id
 
 
 def main_organise(directory_to_organise, copy_int,
-                  verbose_int, subfolder_int, tk_instance):
+                  verbose_int, subfolder_int, tk_label):
 
     global copy_mode  # Copy mode: Copies files instead of moving them
     copy_mode = bool(copy_int)
@@ -25,33 +25,42 @@ def main_organise(directory_to_organise, copy_int,
     global subfolder_mode  # Subfolder mode: Leaves subfolders alone
     subfolder_mode = bool(subfolder_int)
 
+    global tk_instance
+    tk_instance = tk_label
+
     unorganised_files = get_files(directory_to_organise)
 
     counter = 0
 
     for file_path in unorganised_files:
         counter += 1
-        print("Inspecting file {0}/{1}...".format(counter,
-                                                  len(unorganised_files)))
+        log("Inspecting file {0}/{1}...".format(counter,
+                                                len(unorganised_files)))
 
         file_category = find_filetype(file_path[1].lower())
-        verbose_print("File category for {0} identified as {1}"
-                      .format(file_path[1], file_category))
+        verbose_log("File category for {0} identified as {1}"
+                    .format(file_path[1], file_category))
 
         new_filename, file_category = extra_id.extra_id(file_path,
                                                         file_category,
                                                         verbose_mode)
 
-        # print(new_filename)
-        # print(file_category)
+        # log(new_filename)
+        # log(file_category)
 
         file_move(directory_to_organise, file_path,
                   file_category, new_filename)
 
 
-def verbose_print(string):
+def log(string):
+    tk_instance.configure(state="normal")
+    tk_instance.insert("end", string)
+    tk_instance.configure(state="disabled")
+
+
+def verbose_log(string):
     if verbose_mode:
-        print(string)
+        log(string)
 
 
 def get_files(directory):
@@ -108,9 +117,9 @@ def file_move(original_directory, file_path, file_category, new_filename):
 
     if copy_mode:
         copyfile(original_path, new_path)
-        print("Copied '{0}' to '{1}'\n".format(new_filename,
-                                               short_path[1:]))
+        log("Copied '{0}' to '{1}'\n".format(new_filename,
+                                             short_path[1:]))
     else:
         rename(original_path, new_path)
-        print("Moved '{0}' to '{1}'\n".format(new_filename,
-                                              short_path[1:]))
+        log("Moved '{0}' to '{1}'\n".format(new_filename,
+                                            short_path[1:]))
