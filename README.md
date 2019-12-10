@@ -14,6 +14,7 @@ A Python tool to organise messy folders.
 
 ### Planned features
 - [ ] Allowing users to add custom filetypes and categories to the database
+- [ ] 'Undo' button to move files back into their original places
 - [ ] Moving files into folders and subfolders **based on file metadata**
 - [ ] Dynamic renaming of images based on EXIF metadata
 - [ ] ID3 tagging of music files using AcoustID
