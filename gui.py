@@ -71,8 +71,6 @@ def start_button():
     scrollbar.config(command=textbox.yview)
     textbox.config(yscrollcommand=scrollbar.set)
 
-    # TO INSERT INTO TEXTBOX: https://stackoverflow.com/a/24965264
-
     # TO USE PROGRESS BAR: https://stackoverflow.com/a/20749393
 
     progress_bar = ttk.Progressbar(root, orient="horizontal", length=300,
@@ -87,6 +85,8 @@ def start_button():
                              verbose_int,
                              subfolder_int,
                              textbox)
+
+    done_button.config(state="normal")
 
 
 # DEFINE THE WINDOW
