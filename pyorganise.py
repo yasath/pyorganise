@@ -54,6 +54,7 @@ def main_organise(directory_to_organise, copy_int,
 
 def log(string):
     tk_instance.configure(state="normal")
+    tk_instance.insert("end", "\n")
     tk_instance.insert("end", string)
     tk_instance.configure(state="disabled")
 
