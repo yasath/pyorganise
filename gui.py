@@ -71,8 +71,6 @@ def start_button():
     scrollbar.config(command=textbox.yview)
     textbox.config(yscrollcommand=scrollbar.set)
 
-    # TO USE PROGRESS BAR: https://stackoverflow.com/a/20749393
-
     progress_bar = ttk.Progressbar(root, orient="horizontal", length=300,
                                    mode="determinate", maximum=100, value=50)
     progress_bar.grid(row=3, column=0, sticky="w", padx=20, pady=(0, 20))
