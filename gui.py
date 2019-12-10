@@ -84,7 +84,8 @@ def start_button():
                              copy_int,
                              verbose_int,
                              subfolder_int,
-                             textbox)
+                             textbox,
+                             progress_bar)
 
     done_button.config(state="normal")
 

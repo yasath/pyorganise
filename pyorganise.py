@@ -14,7 +14,7 @@ import extra_id
 
 
 def main_organise(directory_to_organise, copy_int,
-                  verbose_int, subfolder_int, tk_label):
+                  verbose_int, subfolder_int, tk_label, tk_progress):
 
     global copy_mode  # Copy mode: Copies files instead of moving them
     copy_mode = bool(copy_int)
@@ -28,9 +28,14 @@ def main_organise(directory_to_organise, copy_int,
     global tk_instance
     tk_instance = tk_label
 
+    global tk_progressbar
+    tk_progressbar = tk_progress
+
     unorganised_files = get_files(directory_to_organise)
 
     counter = 0
+
+    tk_progressbar["maximum"] = len(unorganised_files)
 
     for file_path in unorganised_files:
         counter += 1
@@ -50,6 +55,10 @@ def main_organise(directory_to_organise, copy_int,
 
         file_move(directory_to_organise, file_path,
                   file_category, new_filename)
+
+        progress = ((counter/len(unorganised_files))*len(unorganised_files))
+        tk_progressbar["value"] = progress
+        tk_progressbar.update()
 
 
 def log(string):
