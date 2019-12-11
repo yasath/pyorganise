@@ -11,7 +11,7 @@ import extra_id
 
 from format_classification import file_formats as FORMAT_CATEGORIES
 from os import sep as FOLDER_DELIMITER
-BLACKLIST = ["DS_Store"]
+BLACKLIST = ["DS_Store", "Thumbs.db"]
 
 
 def main_organise(directory_to_organise, copy_int,
