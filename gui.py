@@ -32,8 +32,36 @@ def quit_button():
         pass
 
 
-def done_button():
-    print("pressed")
+def undo_button(copy_int):
+    if copy_int == 0:
+        message = """Are you sure that you want to undo the process and move
+                     the files back to their original directories?"""
+    else:
+        message = """Are you sure that you want to undo the process and delete
+                     the copied files and new directories?"""
+
+    undo_result = messagebox.askyesno("Undo",
+                                      message)
+    if undo_result is True:
+        print("undid")
+    else:
+        pass
+
+
+def done_button(copy_int):
+    root.destroy()
+
+    """
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    undo_option = ttk.Button(root, text="Undo",
+                             command=lambda: undo_button(copy_int))
+    undo_option.grid(row=0, column=0, sticky="e", padx=(200, 0), pady=150)
+
+    quit_option = ttk.Button(root, text="Quit", command=quit_button)
+    quit_option.grid(row=0, column=1, sticky="w", padx=(0, 200), pady=150)
+    """
 
 
 def start_button():
@@ -80,7 +108,7 @@ def start_button():
     progress_bar.grid(row=3, column=0, sticky="w", padx=20, pady=(0, 20))
 
     done_option = ttk.Button(root, text="Done", state="disabled",
-                             command=done_button)
+                             command=lambda: done_button(copy_int))
     done_option.grid(row=3, column=1, sticky="e", pady=(0, 20))
 
     pyorganise.main_organise(directory_to_organise,
