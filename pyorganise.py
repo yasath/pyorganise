@@ -5,12 +5,13 @@ from os import walk
 from glob import glob
 from shutil import copyfile
 
+import extra_id
+
 # Global Constants
+
 from format_classification import file_formats as FORMAT_CATEGORIES
 from os import sep as FOLDER_DELIMITER
-
-# Submodules
-import extra_id
+BLACKLIST = ["DS_Store"]
 
 
 def main_organise(directory_to_organise, copy_int,
@@ -61,6 +62,14 @@ def main_organise(directory_to_organise, copy_int,
         tk_progressbar.update()
 
 
+def check_blacklisted(string):
+    print(string)
+    for blacklisted in BLACKLIST:
+        if blacklisted in string:
+            return(True)
+    return(False)
+
+
 def log(string):
     tk_instance.configure(state="normal")
     tk_instance.insert("end", "\n")
@@ -89,7 +98,8 @@ def get_files(directory):
 
     split_file_array = []
     for file_path in file_array:
-        split_file_array.append(path.splitext(file_path))
+        if not check_blacklisted(file_path):
+            split_file_array.append(path.splitext(file_path))
 
     return(split_file_array)
 
