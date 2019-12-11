@@ -32,6 +32,10 @@ def quit_button():
         pass
 
 
+def done_button():
+    print("pressed")
+
+
 def start_button():
     message_body = folder_input.get() + "\n\n"
 
@@ -75,8 +79,9 @@ def start_button():
                                    mode="determinate", maximum=100, value=50)
     progress_bar.grid(row=3, column=0, sticky="w", padx=20, pady=(0, 20))
 
-    done_button = ttk.Button(root, text="Done", state="disabled")
-    done_button.grid(row=3, column=1, sticky="e", pady=(0, 20))
+    done_option = ttk.Button(root, text="Done", state="disabled",
+                             command=done_button)
+    done_option.grid(row=3, column=1, sticky="e", pady=(0, 20))
 
     pyorganise.main_organise(directory_to_organise,
                              copy_int,
@@ -85,7 +90,7 @@ def start_button():
                              textbox,
                              progress_bar)
 
-    done_button.config(state="normal")
+    done_option.config(state="normal")
 
 
 # DEFINE THE WINDOW
