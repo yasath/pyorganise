@@ -65,6 +65,7 @@ def log(string):
     tk_instance.configure(state="normal")
     tk_instance.insert("end", "\n")
     tk_instance.insert("end", string)
+    tk_instance.yview("end")
     tk_instance.configure(state="disabled")
 
 
