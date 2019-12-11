@@ -131,7 +131,7 @@ def file_move(original_directory, file_path, file_category, new_filename):
             log("Copied '{0}' to '{1}'\n".format(new_filename,
                                                  short_path[1:]))
         except Exception as error:
-            if "are the same file" in error:
+            if "are the same file" in str(error):
                 log("The new file already exists and will not be copied\n")
             else:
                 pass
