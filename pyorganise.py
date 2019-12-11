@@ -126,9 +126,15 @@ def file_move(original_directory, file_path, file_category, new_filename):
     short_path += (FOLDER_DELIMITER + new_filename)
 
     if copy_mode:
-        copyfile(original_path, new_path)
-        log("Copied '{0}' to '{1}'\n".format(new_filename,
-                                             short_path[1:]))
+        try:
+            copyfile(original_path, new_path)
+            log("Copied '{0}' to '{1}'\n".format(new_filename,
+                                                 short_path[1:]))
+        except Exception as error:
+            if "are the same file" in error:
+                log("The new file already exists and will not be copied")
+            else:
+                pass
     else:
         rename(original_path, new_path)
         log("Moved '{0}' to '{1}'\n".format(new_filename,
