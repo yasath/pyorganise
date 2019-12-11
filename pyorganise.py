@@ -45,7 +45,7 @@ def main_organise(directory_to_organise, copy_int,
 
         file_category = find_filetype(file_path[1].lower())
         verbose_log("File category for {0} identified as {1}"
-                    .format(file_path[1], file_category))
+                    .format("".join(file_path), file_category))
 
         new_filename, file_category = extra_id.extra_id(file_path,
                                                         file_category,
