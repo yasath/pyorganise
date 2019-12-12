@@ -155,6 +155,12 @@ elif system() == "Windows":
 else:
     SYS_FONT = "TkDefaultFont"
 
+menubar = tk.Menu(root)
+# helpmenu = tk.Menu(menubar, tearoff=0)
+# helpmenu.add_command(label="Documentation", command=open_pdf)
+# menubar.add_cascade(label="Help", menu=helpmenu)
+root.config(menu=menubar)
+
 # INPUT SECTION
 
 input_title = ttk.Label(root, text="Input", font=(SYS_FONT, 18, "bold"))
