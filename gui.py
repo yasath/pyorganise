@@ -15,8 +15,17 @@ def about_dialog():
     if system() == "Darwin":
         about.configure(background="#ececec")
 
+    input_title = ttk.Label(about, text="Folder Organiser",
+                            font=(SYS_FONT, 18, "bold"))
+    input_title.grid(row=0, pady=(60, 5), padx=30)
 
-def to_YesNo(input_value):
+    ttk.Separator(about).grid(sticky="ew", row=1, columnspan=2)
+
+    input_label = ttk.Label(about, text="Created by Yasath Dias")
+    input_label.grid(row=2, pady=(5, 60), padx=30)
+
+
+def to_yes_no(input_value):
     if input_value == 0:
         return("No")
     elif input_value == 1:
@@ -78,9 +87,9 @@ def start_button():
     message_body = folder_input.get() + "\n\n"
 
     if verbose_mode.get() == 1:
-        message_body += ("Copy mode: "+to_YesNo(copy_mode.get())) + "\n"
-        message_body += ("Verbose mode: "+to_YesNo(verbose_mode.get())) + "\n"
-        message_body += ("Subfolder mode: "+to_YesNo(subfolder_mode.get()))
+        message_body += ("Copy mode: "+to_yes_no(copy_mode.get())) + "\n"
+        message_body += ("Verbose mode: "+to_yes_no(verbose_mode.get())) + "\n"
+        message_body += ("Subfolder mode: "+to_yes_no(subfolder_mode.get()))
         message_body += "\n\n"
 
     message_body += "Are you sure you want to organise this folder?"
