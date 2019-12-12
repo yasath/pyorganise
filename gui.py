@@ -24,6 +24,8 @@ def about_dialog():
     input_label = ttk.Label(about, text="Created by Yasath Dias")
     input_label.grid(row=2, pady=(5, 60), padx=30)
 
+    about.update()
+
 
 def to_yes_no(input_value):
     if input_value == 0:
