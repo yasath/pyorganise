@@ -6,6 +6,16 @@ from platform import system
 import pyorganise
 
 
+def about_dialog():
+    about = tk.Tk()
+    about.title("About")
+    about.resizable(False, False)
+    about.grab_set()
+
+    if system() == "Darwin":
+        about.configure(background="#ececec")
+
+
 def to_YesNo(input_value):
     if input_value == 0:
         return("No")
@@ -130,6 +140,7 @@ root.resizable(False, False)
 if system() == "Darwin":
     root.configure(background="#ececec")
     SYS_FONT = "TkDefaultFont"
+    root.createcommand("tkAboutDialog", about_dialog)
 elif system() == "Windows":
     SYS_FONT = "Segoe UI"
 else:
