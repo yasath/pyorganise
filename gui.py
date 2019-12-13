@@ -9,7 +9,7 @@ import pyorganise
 
 
 def about_dialog():
-    about = tk.Tk()
+    about = tk.Toplevel()
     about.title("About")
     about.resizable(False, False)
     about.grab_set()
