@@ -3,6 +3,8 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 from platform import system
+import icons
+import base64
 import pyorganise
 
 
@@ -162,6 +164,9 @@ menubar = tk.Menu(root)
 # helpmenu.add_command(label="Documentation", command=open_pdf)
 # menubar.add_cascade(label="Help", menu=helpmenu)
 root.config(menu=menubar)
+
+tk_icon = tk.PhotoImage(data=base64.b64decode(icons.program_icon))
+root.wm_iconphoto(True, tk_icon)
 
 # INPUT SECTION
 
