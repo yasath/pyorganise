@@ -49,7 +49,8 @@ def main_organise(directory_to_organise, copy_int,
 
         new_filename, file_category = extra_id.extra_id(file_path,
                                                         file_category,
-                                                        verbose_mode)
+                                                        verbose_mode,
+                                                        tk_label)
 
         # log(new_filename)
         # log(file_category)

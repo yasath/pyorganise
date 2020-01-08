@@ -3,6 +3,14 @@ from platform import system
 from datetime import date
 
 
+def log(string):
+    tk_instance.configure(state="normal")
+    tk_instance.insert("end", "\n")
+    tk_instance.insert("end", string)
+    tk_instance.yview("end")
+    tk_instance.configure(state="disabled")
+
+
 def creation_date(path_to_file):
     if system() == "Windows":
         return(path.getctime(path_to_file))
@@ -14,10 +22,13 @@ def creation_date(path_to_file):
             return(date.fromtimestamp(os_stat.st_mtime))
 
 
-def extra_id(file_path, file_category, verbose_mode):
+def extra_id(file_path, file_category, verbose_mode, tk_label):
 
     original_filename = path.split(file_path[0] + file_path[1])[1]
     extension = file_path[1][1:]
+
+    global tk_instance
+    tk_instance = tk_label
 
     # research other audio extensions that can hold the same type of ID3 tags
     # possibly m4a (esp. from iTunes), aac, flac, wav
@@ -44,8 +55,8 @@ def extra_id(file_path, file_category, verbose_mode):
     if extension == "docx" or extension == "pptx":
         date_created = creation_date(file_path[0] + file_path[1])
         if verbose_mode:
-            print("'{0}' was created on {1}".format(original_filename,
-                                                    date_created))
+            log("'{0}' was created on {1}".format(original_filename,
+                                                  date_created))
         date_created = (str(date_created)).replace("-", ".")
         new_filename = "[{0}] {1}".format(date_created, original_filename)
         new_category = file_category
