@@ -1,6 +1,7 @@
 from os import path, stat
 from platform import system
 from datetime import date
+from re import search
 
 
 def log(string):
@@ -9,6 +10,11 @@ def log(string):
     tk_instance.insert("end", string)
     tk_instance.yview("end")
     tk_instance.configure(state="disabled")
+
+
+def verbose_log(string):
+    if verbose_mode:
+        log(string)
 
 
 def creation_date(path_to_file):
@@ -22,11 +28,13 @@ def creation_date(path_to_file):
             return(date.fromtimestamp(os_stat.st_mtime))
 
 
-def extra_id(file_path, file_category, verbose_mode, tk_label):
+def extra_id(file_path, file_category, verbose_option, tk_label):
 
     original_filename = path.split(file_path[0] + file_path[1])[1]
     extension = file_path[1][1:]
 
+    global verbose_mode
+    verbose_mode = verbose_option
     global tk_instance
     tk_instance = tk_label
 
@@ -54,11 +62,17 @@ def extra_id(file_path, file_category, verbose_mode, tk_label):
 
     if extension == "docx" or extension == "pptx":
         date_created = creation_date(file_path[0] + file_path[1])
-        if verbose_mode:
-            log("'{0}' was created on {1}".format(original_filename,
-                                                  date_created))
+        verbose_log("'{0}' was created on {1}".format(original_filename,
+                                                      date_created))
         date_created = (str(date_created)).replace("-", ".")
-        new_filename = "[{0}] {1}".format(date_created, original_filename)
+        if not search("[0-9][0-9][0-9][0-9].[0-9][0-9].[0-9][0-9]",
+                      original_filename):
+                        new_filename = "[{0}] {1}".format(date_created,
+                                                          original_filename)
+        else:
+            verbose_log("'{0}' already contains a date so will not be renamed"
+                        .format(original_filename))
+            new_filename = original_filename
         new_category = file_category
         new_category.append(str(date_created.split(".")[0]))
         return(new_filename, new_category)
