@@ -2,8 +2,6 @@ from os import path, stat
 from platform import system
 from datetime import date
 
-# RESEARCH IF YOU CAN KEEP THESE MODULE FILES IN A SEPARATE SUBFOLDER
-
 
 def creation_date(path_to_file):
     if system() == "Windows":
