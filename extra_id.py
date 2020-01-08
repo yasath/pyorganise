@@ -60,7 +60,7 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
         # folder extended with ['iPhone 6', '2019.04.22', 'IMG_2203.jpg']
         pass
 
-    if extension == "docx" or extension == "pptx":
+    if extension in ["docx", "pptx", "pdf"]:
         date_created = creation_date(file_path[0] + file_path[1])
         verbose_log("'{0}' was created on {1}".format(original_filename,
                                                       date_created))
