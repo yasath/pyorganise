@@ -31,6 +31,7 @@ def creation_date(path_to_file):
 def extra_id(file_path, file_category, verbose_option, tk_label):
 
     original_filename = path.split(file_path[0] + file_path[1])[1]
+    new_filename = None
     extension = file_path[1][1:]
 
     global verbose_mode
@@ -78,9 +79,16 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
         return(new_filename, new_category)
 
     if extension == "vcf":
-        # EXTERNAL vcf_tag.PY FILE
-        # read vcf contact data using vobject library
-        # file renamed with 'First Middle Last'
-        pass
+        with open(file_path[0] + file_path[1]) as vcard:
+            for line in vcard.readlines():
+                if "FN:" in line:
+                    verbose_log("'{0}' detected contact as '{1}'"
+                                .format(original_filename, line[3:].strip()))
+                    new_filename = line[3:].strip() + "." + extension
+        if not new_filename:
+            verbose_log("'{0}' does not contain FN: variable so contact name"
+                        .format(original_filename) + " cannot be detected")
+            new_filename = original_filename
+        return(new_filename, file_category)
 
     return(original_filename, file_category)
