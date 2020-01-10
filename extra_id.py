@@ -2,6 +2,7 @@ from os import path, stat
 from platform import system
 from datetime import date
 from re import search
+from exif import Image
 
 
 def log(string):
@@ -52,20 +53,37 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
         pass
 
     if extension in ["jpg", "tiff", "tif"]:
-        # EXTERNAL exif_tag.PY FILE
-        # read exif data from image
-        # check for device metadata and return string, e.g. 'iPhone 6'
-        # find date created and return string, e.g. '2019.04.22'
-        # check location and map coordinates to location (DIFFICULT)
-        # original filename kept
-        # folder extended with ['iPhone 6', '2019.04.22', 'IMG_2203.jpg']
-        pass
+        with open(file_path[0] + file_path[1], "rb") as image_file:
+            current_image = Image(image_file)
+        if not current_image.has_exif:
+            verbose_log("'{0}' does not contain EXIF data so will not be"
+                        .format(original_filename) + " categorised based on" +
+                        " device")
+            return(original_filename, file_category)
+        else:
+            try:
+                image_device = current_image.model
+                date_created = (str(creation_date(file_path[0]
+                                                  + file_path[1]))).replace(
+                                                  "-", ".")
+                verbose_log("'{0}' was taken on '{1}' on {2}"
+                            .format(original_filename, image_device,
+                                    date_created))
+                new_category = file_category
+                new_category.append(image_device)
+                new_category.append(date_created)
+                return(original_filename, new_category)
+            except Exception:
+                verbose_log("The EXIF data of '{0}' does not contain the"
+                            .format(original_filename)
+                            + " device it was taken on")
+                return(original_filename, file_category)
 
     if extension in ["docx", "pptx", "pdf"]:
-        date_created = creation_date(file_path[0] + file_path[1])
+        date_created = (str(creation_date(file_path[0] +
+                        file_path[1]))).replace("-", ".")
         verbose_log("'{0}' was created on {1}".format(original_filename,
                                                       date_created))
-        date_created = (str(date_created)).replace("-", ".")
         if not search("[0-9][0-9][0-9][0-9].[0-9][0-9].[0-9][0-9]",
                       original_filename):
                         new_filename = "[{0}] {1}".format(date_created,
