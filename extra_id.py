@@ -51,7 +51,7 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
         # tag song metadata with mutagen
         pass
 
-    if extension == "jpg":
+    if extension in ["jpg", "tiff", "tif"]:
         # EXTERNAL exif_tag.PY FILE
         # read exif data from image
         # check for device metadata and return string, e.g. 'iPhone 6'
