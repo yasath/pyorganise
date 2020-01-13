@@ -3,6 +3,7 @@ from platform import system
 from datetime import date
 from re import search
 from exif import Image
+from mutagen.mp3 import MP3
 
 
 def log(string):
@@ -40,17 +41,21 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
     global tk_instance
     tk_instance = tk_label
 
-    # research other audio extensions that can hold the same type of ID3 tags
-    # possibly m4a (esp. from iTunes), aac, flac, wav
     if extension == "mp3":
-        # EXTERNAL music_tag.PY FILE
-        # acoustid thing here
-        # look up in musicbrainz database
-        # return song metadata
-        # file renamed with 'Artist - Title'
-        # folder extended with ['Artist', '[Year] Album']
-        # tag song metadata with mutagen
-        pass
+        mp3_file = MP3(file_path[0] + file_path[1])
+        if mp3_file.info.length > 30:
+            # acoustid fingerprint and match
+            # lookup in musicbrainz database
+            # return song metadata
+            # download album cover
+            # file renamed with 'Artist - Title'
+            # folder extended with ['Artist', '[Year] Album']
+            # tag song metadata with mutagen
+            print()
+        else:
+            verbose_log("'{0}' is shorter than 30 seconds so will not be"
+                        .format(original_filename) + " identified as a song")
+            return(original_filename, file_category)
 
     if extension in ["jpg", "tiff", "tif"]:
         with open(file_path[0] + file_path[1], "rb") as image_file:
