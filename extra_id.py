@@ -2,8 +2,13 @@ from os import path, stat
 from platform import system
 from datetime import date
 from re import search
+
 from exif import Image
+
 from mutagen.mp3 import MP3
+from acoustid import match
+from itertools import groupby
+ACOUSTID_KEY = "wrGJUq3wJo"
 
 
 def log(string):
@@ -44,7 +49,21 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
     if extension == "mp3":
         mp3_file = MP3(file_path[0] + file_path[1])
         if mp3_file.info.length > 30:
-            # acoustid fingerprint and match
+            match_count = 0
+            possible_matches = []
+            for score, id, title, artist in match(ACOUSTID_KEY, file_path[0] +
+                                                  file_path[1]):
+                if match_count < 5:
+                    possible_matches.append([title, artist])
+                    match_count += 1
+            counts = [(i, len(list(c))) for i, c in groupby(sorted(
+                                                            possible_matches))]
+            counts.sort(key=lambda x: x[1])
+            matched = counts[-1][0]
+            verbose_log("'{0}' identified as '{1} - {2}'".format(
+                                                         original_filename,
+                                                         matched[1],
+                                                         matched[0]))
             # lookup in musicbrainz database
             # return song metadata
             # download album cover
