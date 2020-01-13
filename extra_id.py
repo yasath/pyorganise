@@ -49,18 +49,26 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
     if extension == "mp3":
         mp3_file = MP3(file_path[0] + file_path[1])
         if mp3_file.info.length > 30:
+            if mp3_file.tags is None:
+                mp3_file.add_tags()
+                mp3_file.save()
             matched = music_tag.acoustid_match(ACOUSTID_KEY, file_path[0] +
                                                file_path[1])
             verbose_log("'{0}' identified as '{1} - {2}'".format(
                                                          original_filename,
                                                          matched[0],
                                                          matched[1]))
-            artist, title, album, year, artwork = music_tag.lookup(matched)
-            verbose_log("Album identified as '{0}' released in {1}".format(
-                                                                  album, year))
-            # file renamed with 'Artist - Title'
-            # folder extended with ['Artist', '[Year] Album']
-            # tag song metadata with mutagen
+            artist, title, album, year, art, trackno, genre = music_tag.lookup(
+                                                              matched)
+            verbose_log("Song identified as track {0} of '{1}' released in {2}"
+                        .format(trackno, album, year))
+            music_tag.tag(file_path[0] + file_path[1],
+                          artist, title, album, year, art, trackno, genre)
+            new_filename = "{0} - {1}.{2}".format(artist, title, extension)
+            album_folder_name = "[{0}] {1}".format(year, album)
+            new_category = file_category
+            new_category.extend([artist, album_folder_name])
+            return(new_filename, new_category)
         else:
             verbose_log("'{0}' is shorter than 30 seconds so will not be"
                         .format(original_filename) + " identified as a song")

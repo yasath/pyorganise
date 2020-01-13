@@ -1,6 +1,7 @@
 from acoustid import match
 from itertools import groupby
 import requests
+from mutagen.easyid3 import EasyID3
 
 
 def acoustid_match(api_key, file_path):
@@ -33,4 +34,17 @@ def lookup(acoustid_matched_array):
     year = search_results["results"][0]["releaseDate"][0:4]
     artwork = search_results["results"][0]["artworkUrl100"].replace("100x100",
                                                                     "600x600")
-    return(artist, title, album, year, artwork)
+    track_number = search_results["results"][0]["trackNumber"]
+    genre = search_results["results"][0]["primaryGenreName"]
+    return(artist, title, album, year, artwork, track_number, genre)
+
+
+def tag(file_path, artist, title, album, year, artwork, track_number, genre):
+    audio_file = EasyID3(file_path)
+    audio_file["artist"] = artist
+    audio_file["title"] = title
+    audio_file["album"] = album
+    audio_file["date"] = year
+    audio_file["tracknumber"] = str(track_number)
+    audio_file["genre"] = genre
+    audio_file.save()
