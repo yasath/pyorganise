@@ -1,5 +1,6 @@
 from acoustid import match
 from itertools import groupby
+import requests
 
 
 def acoustid_match(api_key, file_path):
@@ -17,3 +18,19 @@ def acoustid_match(api_key, file_path):
     except Exception:
         matched = possible_matches[0]
     return([matched[1], matched[0]])
+
+
+def lookup(acoustid_matched_array):
+    artist = acoustid_matched_array[0]
+    title = acoustid_matched_array[1]
+    url_artist = artist.lower().replace(" ", "+")
+    url_title = title.lower().replace(" ", "+")
+    api_request = ("https://itunes.apple.com/search?"+"term={0}+{1}&limit=1"
+                   .format(url_artist, url_title))
+    search_results = requests.get(api_request).json()
+
+    album = search_results["results"][0]["collectionName"]
+    year = search_results["results"][0]["releaseDate"][0:4]
+    artwork = search_results["results"][0]["artworkUrl100"].replace("100x100",
+                                                                    "600x600")
+    return(artist, title, album, year, artwork)

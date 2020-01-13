@@ -7,7 +7,7 @@ from exif import Image
 
 from mutagen.mp3 import MP3
 
-import metadata_tag.music_tag
+import metadata_tag.music_tag as music_tag
 ACOUSTID_KEY = "wrGJUq3wJo"
 
 
@@ -49,20 +49,18 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
     if extension == "mp3":
         mp3_file = MP3(file_path[0] + file_path[1])
         if mp3_file.info.length > 30:
-            matched = metadata_tag.music_tag.acoustid_match(ACOUSTID_KEY,
-                                                            file_path[0] +
-                                                            file_path[1])
+            matched = music_tag.acoustid_match(ACOUSTID_KEY, file_path[0] +
+                                               file_path[1])
             verbose_log("'{0}' identified as '{1} - {2}'".format(
                                                          original_filename,
                                                          matched[0],
                                                          matched[1]))
-            # lookup in musicbrainz database
-            # return song metadata
-            # download album cover
+            artist, title, album, year, artwork = music_tag.lookup(matched)
+            verbose_log("Album identified as '{0}' released in {1}".format(
+                                                                  album, year))
             # file renamed with 'Artist - Title'
             # folder extended with ['Artist', '[Year] Album']
             # tag song metadata with mutagen
-            print()
         else:
             verbose_log("'{0}' is shorter than 30 seconds so will not be"
                         .format(original_filename) + " identified as a song")
