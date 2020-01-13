@@ -16,4 +16,4 @@ def acoustid_match(api_key, file_path):
         matched = counts[-1][0]
     except Exception:
         matched = possible_matches[0]
-    return(matched)
+    return([matched[1], matched[0]])

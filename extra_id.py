@@ -54,8 +54,8 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
                                                             file_path[1])
             verbose_log("'{0}' identified as '{1} - {2}'".format(
                                                          original_filename,
-                                                         matched[1],
-                                                         matched[0]))
+                                                         matched[0],
+                                                         matched[1]))
             # lookup in musicbrainz database
             # return song metadata
             # download album cover
