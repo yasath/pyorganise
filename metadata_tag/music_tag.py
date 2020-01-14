@@ -1,7 +1,8 @@
 from acoustid import match
 from itertools import groupby
 import requests
-from mutagen.id3 import ID3, TIT2, TPE1, TRCK, TALB, TDRC, TCON
+from mutagen.id3 import ID3, TIT2, TPE1, TRCK, TALB, TDRC, TCON, APIC
+from urllib.request import urlopen
 
 
 def acoustid_match(api_key, file_path):
@@ -47,4 +48,11 @@ def tag(file_path, artist, title, album, year, artwork, track_number, genre):
     audio_file.add(TDRC(encoding=3, text=year))
     audio_file.add(TRCK(encoding=3, text=str(track_number)))
     audio_file.add(TCON(encoding=3, text=genre))
+    artwork_url = urlopen(artwork)
+    audio_file.add(APIC(
+                        encoding=3,
+                        mime="image/jpeg",
+                        type=3, desc=u"Cover",
+                        data=artwork_url.read()
+    ))
     audio_file.save()
