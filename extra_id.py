@@ -78,7 +78,7 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
                         .format(original_filename) + " identified as a song")
             return(original_filename, file_category)
 
-    if extension in ["jpg", "tiff", "tif"]:
+    if extension in ["jpg", "jpeg", "tiff", "tif"]:
         with open(file_path[0] + file_path[1], "rb") as image_file:
             current_image = Image(image_file)
         if not current_image.has_exif:
