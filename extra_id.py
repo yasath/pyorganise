@@ -39,7 +39,7 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
 
     original_filename = path.split(file_path[0] + file_path[1])[1]
     new_filename = None
-    extension = file_path[1][1:]
+    extension = file_path[1][1:].lower()
 
     global verbose_mode
     verbose_mode = verbose_option
