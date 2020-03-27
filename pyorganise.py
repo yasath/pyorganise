@@ -58,8 +58,7 @@ def main_organise(directory_to_organise, copy_int,
         file_move(directory_to_organise, file_path,
                   file_category, new_filename)
 
-        progress = ((counter/len(unorganised_files))*len(unorganised_files))
-        tk_progressbar["value"] = progress
+        tk_progressbar["value"] = counter
         tk_progressbar.update()
 
 
