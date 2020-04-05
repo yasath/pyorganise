@@ -67,7 +67,8 @@ file_formats = [
          ["sldasm", "Solidworks"],
          ["slddrw", "Solidworks"],
          ["skp", "SketchUp"],
-         ["123dx", "Autodesk 123D"]
+         ["123dx", "Autodesk 123D"],
+         ["gcode", "3D Printing"]
         ]
      ],
 
