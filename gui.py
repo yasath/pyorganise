@@ -125,6 +125,7 @@ def start_button():
                  sticky="w")
     scrollbar.config(command=textbox.yview)
     textbox.config(yscrollcommand=scrollbar.set)
+    textbox.tag_config("error", foreground="red")
 
     progress_bar = ttk.Progressbar(root, orient="horizontal", length=300,
                                    mode="determinate", maximum=100, value=50)
