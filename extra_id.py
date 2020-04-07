@@ -34,9 +34,9 @@ def error_log(string):
 
 def creation_date(path_to_file):
     if system() == "Windows":
-        return(path.getctime(path_to_file))
+        return(date.fromtimestamp(path.getctime(path_to_file)))
     else:
-        os_stat = (date.fromtimestamp(stat(path_to_file)))
+        os_stat = (stat(path_to_file)))
         try:
             return(date.fromtimestamp(os_stat.st_birthtime))
         except AttributeError:  # used if platform not supported, e.g. Linux
@@ -114,7 +114,8 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
                 new_category.append(image_device)
                 new_category.append(date_created)
                 return(original_filename, new_category)
-            except Exception:
+            except Exception as e:
+                print(e)
                 verbose_log("The EXIF data of '{0}' does not contain the"
                             .format(original_filename)
                             + " device it was taken on")
