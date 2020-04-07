@@ -114,8 +114,7 @@ def extra_id(file_path, file_category, verbose_option, tk_label):
                 new_category.append(image_device)
                 new_category.append(date_created)
                 return(original_filename, new_category)
-            except Exception as e:
-                print(e)
+            except Exception:
                 verbose_log("The EXIF data of '{0}' does not contain the"
                             .format(original_filename)
                             + " device it was taken on")
