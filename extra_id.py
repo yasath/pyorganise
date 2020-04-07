@@ -36,7 +36,7 @@ def creation_date(path_to_file):
     if system() == "Windows":
         return(date.fromtimestamp(path.getctime(path_to_file)))
     else:
-        os_stat = (stat(path_to_file)))
+        os_stat = stat(path_to_file)
         try:
             return(date.fromtimestamp(os_stat.st_birthtime))
         except AttributeError:  # used if platform not supported, e.g. Linux
