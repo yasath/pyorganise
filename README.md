@@ -11,11 +11,11 @@ A Python tool to organise messy folders.
 - [x] Subfolder mode to maintain existing organised subfolders
 - [x] Dynamic renaming and categorisation of documents based on date created
 - [x] Categorisation of JPEG and TIFF images based on the device and date they were taken on
+- [x] ID3 tagging of music files using AcoustID
 
 ### Planned features
 - [ ] Allowing users to add custom filetypes and categories to the database
 - [ ] 'Undo' button to move files back into their original places
-- [ ] ID3 tagging of music files using AcoustID
 - [ ] Allowing `pyorganise` to be imported as a function in other Python programs
 - [ ] *(Not in foreseeable future)* Using AcoustID fingerprints to identify and delete duplicate audio files, and keeping the higher quality option
 - [ ] *(Not in foreseeable future)* Identifying and deleting duplicate image files, and keeping the higher quality option
